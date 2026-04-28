@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Registration Form</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --error-color: #e74c3c;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+        
+        main {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        section {
+            margin-bottom: 2rem;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+        
+        input:invalid {
+            border-color: var(--error-color);
+        }
+        
+        input:valid {
+            border-color: var(--success-color);
+        }
+        
+        .required::after {
+            content: " *";
+            color: var(--error-color);
+        }
+        
+        button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: var(--secondary-color);
+        }
+        
+        fieldset {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        legend {
+            font-weight: 600;
+            padding: 0 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--light-color);
+        }
+        
+        .media-container {
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        
+        video {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--dark-color);
+            color: white;
+        }
+        
+        .instructions {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .instructions h3 {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        
+        .instructions ul {
+            margin-left: 1.5rem;
+        }
+        
+        .error-message {
+            color: var(--error-color);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Complete Registration Form</h1>
+            <p>Please fill out all required fields to create your account</p>
+        </header>
+        
+        <main>
+            <div class="left-column">
+                <section class="instructions">
+                    <h3>Application Instructions</h3>
+                    <ul>
+                        <li>Fields marked with an asterisk (*) are required</li>
+                        <li>Ensure your email is correct for verification</li>
+                        <li>Use a strong password with at least 8 characters</li>
+                        <li>Have your identification documents ready</li>
+                    </ul>
+                </section>
+                
+                <form id="registrationForm" novalidate>
+                    <fieldset>
+                        <legend>Personal Information</legend>
+                        
+                        <div class="form-group">
+                            <label for="fullname" class="required">Full Name</label>
+                            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required autocomplete="name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="required">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required autocomplete="email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" autocomplete="tel">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="dob" class="required">Date of Birth</label>
+                            <input type="date" id="dob" name="dob" required autocomplete="bday">
+                        </div>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>Account Security</legend>
+                        
+                        <div class="form-group">
+                            <label for="password" class="required">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Create a strong password" required minlength="8" autocomplete="new-password">
+                            <div class="error-message">Password must be at least 8 characters</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword" class="required">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required autocomplete="new-password">
+                            <div class="error-message" id="passwordError">Passwords must match</div>
+                        </div>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>Additional Information</legend>
+                        
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select id="country" name="country">
+                                <option value="">Select your country</option>
+                                <option value="usa">United States</option>
+                                <option value="canada">Canada</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="australia">Australia</option>
+                                <option value="germany">Germany</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bio">Short Biography</label>
+                            <textarea id="bio" name="bio" placeholder="Tell us a little about yourself" rows="4"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Subscribe to Newsletter</label>
+                            <input type="checkbox" id="newsletter" name="newsletter" checked>
+                            <label for="newsletter" style="display: inline; font-weight: normal;">Yes, send me updates</label>
+                        </div>
+                    </fieldset>
+                    
+                    <div class="form-group">
+                        <label for="terms" style="display: inline;">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            I agree to the <a href="#">Terms and Conditions</a>
+                        </label>
+                    </div>
+                    
+                    <button type="submit">Submit Registration</button>
+                </form>
+            </div>
+            
+            <div class="right-column">
+                <section>
+                    <h2>Why Create an Account?</h2>
+                    <p>Our platform offers these benefits to registered users:</p>
+                    <ul>
+                        <li>Access to exclusive content and features</li>
+                        <li>Personalized experience based on your preferences</li>
+                        <li>Faster checkout process for services</li>
+                        <li>Ability to save your progress and preferences</li>
+                    </ul>
+                    
+                    <div class="media-container">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Benefits of registration">
+                    </div>
+                </section>
+                
+                <section>
+                    <h2>Security Standards</h2>
+                    <p>We take your privacy seriously. Here's how we protect your data:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Encryption</td>
+                                <td>All data is encrypted in transit and at rest</td>
+                            </tr>
+                            <tr>
+                                <td>Two-Factor Auth</td>
+                                <td>Optional extra security layer for your account</td>
+                            </tr>
+                            <tr>
+                                <td>Privacy Controls</td>
+                                <td>You control what information is visible to others</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <section>
+                    <h2>See How It Works</h2>
+                    <div class="media-container">
+                        <video controls poster="https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+                            <source src="#" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p><small>Video demonstration of our registration process</small></p>
+                    </div>
+                </section>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2023 Registration Portal. All rights reserved.</p>
+            <p>Privacy Policy | Terms of Service | Contact Us</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registrationForm');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            const passwordError = document.getElementById('passwordError');
+            
+            // Initially hide error messages
+            passwordError.style.display = 'none';
+            
+            // Validate passwords match
+            confirmPassword.addEventListener('input', function() {
+                if (password.value !== confirmPassword.value) {
+                    confirmPassword.setCustomValidity("Passwords do not match");
+                    passwordError.style.display = 'block';
+                } else {
+                    confirmPassword.setCustomValidity("");
+                    passwordError.style.display = 'none';
+                }
+            });
+            
+            // Form submission handler
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    
+                    // Show validation errors
+                    const inputs = form.querySelectorAll('input, select, textarea');
+                    inputs.forEach(input => {
+                        if (!input.checkValidity()) {
+                            input.classList.add('invalid');
+                        }
+                    });
+                } else {
+                    // In a real application, this would submit the form
+                    event.preventDefault();
+                    alert('Form submitted successfully! (This is a demo - form would normally be processed)');
+                }
+                
+                form.classList.add('validated');
+            });
+            
+            // Real-time validation
+            const inputs = form.querySelectorAll('input[required], select[required]');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (input.checkValidity()) {
+                        input.classList.remove('invalid');
+                        input.classList.add('valid');
+                    } else {
+                        input.classList.remove('valid');
+                        input.classList.add('invalid');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
