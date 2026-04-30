@@ -1,0 +1,4 @@
+Run the binary files separately on the terminal.
+First Run the server binary file without args.
+Then run client binary file with local hostname and the port to connect to the server.i.e ./tcp_client 127.0.0.1 8080
+The tcp server at the moment is only able to convert text to uppercase send by client.
