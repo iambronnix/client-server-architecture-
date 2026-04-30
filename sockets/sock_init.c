@@ -37,3 +37,4 @@ begin
 #endif
 	return 0;
 end 
+//Run the binary code on the terminal using ./sock_init command altenatively you could use gcc sock_init.c
